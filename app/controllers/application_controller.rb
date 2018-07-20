@@ -17,6 +17,7 @@ class ApplicationController < Sinatra::Base
 
   post '/recipes' do
     @recipe = Recipe.create(name: params[:name], ingredients: params[:ingredients], cook_time: params[:cook_time])
+    @recipe.save
   end
 
   get '/recipes/:id' do
@@ -42,6 +43,7 @@ class ApplicationController < Sinatra::Base
     @recipe = Recipe.find_by_id(params[:id])
     @recipe.delete
     erb :delete
+    
   end
 
 
